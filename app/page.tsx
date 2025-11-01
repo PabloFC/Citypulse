@@ -1,4 +1,16 @@
+"use client";
+
+import { useState } from "react";
+import CitySearch from "./components/CitySearch";
+
 export default function Home() {
+  const [selectedCity, setSelectedCity] = useState<string | null>(null);
+
+  const handleCitySelect = (city: string) => {
+    setSelectedCity(city);
+    console.log("Ciudad seleccionada:", city);
+  };
+
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -16,13 +28,22 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Placeholder para búsqueda */}
+        {/* Buscador de ciudades */}
         <div className="max-w-2xl mx-auto mb-12">
-          <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 p-8 text-center">
-            <p className="text-gray-500 dark:text-gray-400">
-              🔍 El buscador de ciudades aparecerá aquí en el siguiente paso
-            </p>
-          </div>
+          <CitySearch onCitySelect={handleCitySelect} />
+
+          {/* Mostrar ciudad seleccionada */}
+          {selectedCity && (
+            <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl">
+              <p className="text-center text-blue-800 dark:text-blue-300">
+                📍 Ciudad seleccionada:{" "}
+                <span className="font-semibold">{selectedCity}</span>
+              </p>
+              <p className="text-center text-sm text-blue-600 dark:text-blue-400 mt-2">
+                Los datos del dashboard aparecerán aquí en los siguientes pasos
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Placeholder para tarjetas */}
