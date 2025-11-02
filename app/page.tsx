@@ -3,7 +3,8 @@
 import { useState } from "react";
 import CitySearch from "./components/CitySearch";
 import WeatherCard from "./components/WeatherCard";
-import AirQualityCard from "./components/AirQualityCard";
+import EventsSection from "./components/EventsSection";
+import NewsSection from "./components/NewsSection";
 
 export default function Home() {
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
@@ -41,19 +42,11 @@ export default function Home() {
             {/* Weather Card */}
             <WeatherCard city={selectedCity} />
 
-            {/* Air Quality Card */}
-            <AirQualityCard city={selectedCity} />
+            {/* Events Section */}
+            <EventsSection city={selectedCity} />
 
-            {/* Placeholder para Noticias */}
-            <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 p-6 hover:shadow-xl transition-shadow">
-              <h3 className="text-lg font-semibold mb-2">📰 Noticias</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                Últimas noticias locales
-              </p>
-              <p className="text-xs text-gray-400 dark:text-gray-500 mt-4">
-                Siguiente paso...
-              </p>
-            </div>
+            {/* News Section - ocupa todo el ancho */}
+            <NewsSection city={selectedCity} />
           </div>
         ) : (
           /* Mensaje inicial cuando no hay ciudad seleccionada */

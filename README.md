@@ -1,30 +1,38 @@
 # 🌆 CityPulse
 
-Dashboard urbano en tiempo real que muestra clima, calidad del aire y noticias locales de cualquier ciudad del mundo.
+Dashboard urbano en tiempo real que muestra clima, eventos próximos y noticias locales de cualquier ciudad del mundo.
+
+## ✨ Características
+
+- 🌡️ **Clima actual**: Temperatura, sensación térmica, humedad y más
+- 🎭 **Eventos próximos**: Los 5 eventos más cercanos en la ciudad (conciertos, deportes, teatro, etc.)
+- 📰 **Noticias locales**: Las 3 noticias más importantes de cada ciudad
+- 🌓 **Modo oscuro**: Interfaz adaptable a tus preferencias
+- 📱 **Responsive**: Funciona perfectamente en móvil, tablet y desktop
 
 ## 🛠️ Stack Técnico
 
 - **Next.js 14** (App Router)
 - **TypeScript**
 - **TailwindCSS**
-- **Framer Motion** (animaciones)
-- **SWR** (data fetching)
+- **React Hooks**
 
 ## 🚀 Instalación
 
 1. Clona el repositorio
+
 2. Instala las dependencias:
 
 ```bash
 npm install
 ```
 
-3. Crea un archivo `.env.local` basado en `.env.local.example` y agrega tus API keys:
+3. Crea un archivo `.env.local` en la raíz del proyecto con tus API keys:
 
 ```env
-OPENWEATHER_API_KEY=tu_api_key
-NEWS_API_KEY=tu_api_key
-AIR_API_KEY=tu_api_key
+NEXT_PUBLIC_OPENWEATHER_API_KEY=tu_api_key_openweather
+NEXT_PUBLIC_NEWS_API_KEY=tu_api_key_newsapi
+NEXT_PUBLIC_TICKETMASTER_API_KEY=tu_api_key_ticketmaster
 ```
 
 4. Ejecuta el servidor de desarrollo:
@@ -35,10 +43,92 @@ npm run dev
 
 5. Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
+## � Obtención de API Keys
+
+### OpenWeatherMap (Clima)
+
+- Visita [https://openweathermap.org/api](https://openweathermap.org/api)
+- Crea una cuenta gratuita
+- Obtén tu API key del dashboard
+- **Límite gratuito**: 1,000 llamadas/día
+
+### NewsAPI (Noticias)
+
+- Consulta la guía detallada: [`NEWS_API_GUIDE.md`](./NEWS_API_GUIDE.md)
+- Visita [https://newsapi.org](https://newsapi.org)
+- Regístrate gratis
+- **Límite gratuito**: 100 solicitudes/día
+
+### Ticketmaster (Eventos)
+
+- Consulta la guía detallada: [`TICKETMASTER_API_GUIDE.md`](./TICKETMASTER_API_GUIDE.md)
+- Visita [https://developer.ticketmaster.com](https://developer.ticketmaster.com)
+- Crea una aplicación y obtén tu Consumer Key
+- **Límite gratuito**: 5,000 llamadas/día
+
 ## 📋 APIs Utilizadas
 
-- [OpenWeatherMap](https://openweathermap.org/api) - Clima y calidad del aire
-- [NewsAPI](https://newsapi.org) - Noticias locales
+- **OpenWeatherMap** - Información meteorológica en tiempo real
+- **NewsAPI** - Noticias locales y relevantes
+- **Ticketmaster Discovery API** - Eventos y entretenimiento
+
+## 📂 Estructura del Proyecto
+
+```
+CityPulse/
+├── app/
+│   ├── components/
+│   │   ├── CitySearch.tsx      # Buscador de ciudades
+│   │   ├── WeatherCard.tsx     # Tarjeta de clima
+│   │   ├── EventCard.tsx       # Tarjeta de evento individual
+│   │   ├── EventsSection.tsx   # Sección de eventos
+│   │   ├── NewsCard.tsx        # Tarjeta de noticia individual
+│   │   └── NewsSection.tsx     # Sección de noticias
+│   ├── types/
+│   │   ├── weather.ts          # Tipos para clima
+│   │   ├── events.ts           # Tipos para eventos
+│   │   └── news.ts             # Tipos para noticias
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── public/
+├── TICKETMASTER_API_GUIDE.md   # Guía de Ticketmaster
+├── NEWS_API_GUIDE.md           # Guía de NewsAPI
+├── API_KEYS_GUIDE.md           # Guía general de APIs
+└── README.md
+```
+
+## 🎨 Capturas de Pantalla
+
+_(Añade capturas de pantalla de tu aplicación aquí)_
+
+## 🚀 Despliegue
+
+### Vercel (Recomendado)
+
+1. Sube tu proyecto a GitHub
+2. Importa el repositorio en [Vercel](https://vercel.com)
+3. Añade las variables de entorno en la configuración
+4. Despliega automáticamente
+
+### Otras plataformas
+
+Compatible con cualquier plataforma que soporte Next.js:
+
+- Netlify
+- Railway
+- Render
+- AWS Amplify
+
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas. Por favor:
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
 ## 📝 Licencia
 
