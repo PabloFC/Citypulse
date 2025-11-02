@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import CitySearch from "./components/CitySearch";
-import WeatherCard from "./components/WeatherCard";
+import WeatherBanner from "./components/WeatherBanner";
 import EventsSection from "./components/EventsSection";
 import NewsSection from "./components/NewsSection";
 
@@ -38,15 +38,18 @@ export default function Home() {
 
         {/* Dashboard - Solo se muestra si hay una ciudad seleccionada */}
         {selectedCity ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Weather Card */}
-            <WeatherCard city={selectedCity} />
+          <div>
+            {/* Weather Banner - Ocupa todo el ancho */}
+            <WeatherBanner city={selectedCity} />
 
-            {/* Events Section */}
-            <EventsSection city={selectedCity} />
+            {/* Grid de Eventos y Noticias */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Events Section */}
+              <EventsSection city={selectedCity} />
 
-            {/* News Section - ocupa todo el ancho */}
-            <NewsSection city={selectedCity} />
+              {/* News Section */}
+              <NewsSection city={selectedCity} />
+            </div>
           </div>
         ) : (
           /* Mensaje inicial cuando no hay ciudad seleccionada */

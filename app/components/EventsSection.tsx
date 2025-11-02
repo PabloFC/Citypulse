@@ -33,12 +33,12 @@ export default function EventsSection({
           );
         }
 
-        // Construir URL con parámetros
+        // Construir URL con parámetros - Traer más eventos para filtrar los de baja calidad
         const params = new URLSearchParams({
           apikey: apiKey,
           city: city,
           countryCode: countryCode,
-          size: "3", // Traer solo 3 eventos más importantes
+          size: "10", // Traer 10 eventos para filtrar y quedarnos con 3 de calidad
           sort: "date,asc", // Ordenar por fecha ascendente (próximos eventos)
           locale: "es-ES",
         });
@@ -58,7 +58,33 @@ export default function EventsSection({
         }
 
         const data: TicketmasterResponse = await response.json();
-        setEventsData(data);
+
+        // Filtrar eventos con imágenes de alta calidad
+        if (data._embedded?.events) {
+          const highQualityEvents = data._embedded.events.filter((event) => {
+            if (!event.images || event.images.length === 0) return false;
+
+            // Buscar imágenes de buena calidad (ancho >= 640px)
+            const hasHighQualityImage = event.images.some(
+              (img) => img.width >= 640
+            );
+            return hasHighQualityImage;
+          });
+
+          // Limitar a 3 eventos de calidad
+          setEventsData({
+            ...data,
+            _embedded: {
+              events: highQualityEvents.slice(0, 3),
+            },
+            page: {
+              ...data.page,
+              totalElements: highQualityEvents.length,
+            },
+          });
+        } else {
+          setEventsData(data);
+        }
       } catch (err) {
         setError(err instanceof Error ? err.message : "Error desconocido");
       } finally {

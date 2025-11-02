@@ -27,6 +27,7 @@ export interface WeatherData {
   clouds: {
     all: number
   }
+  visibility?: number
   dt: number
   coord: {
     lat: number

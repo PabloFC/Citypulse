@@ -11,10 +11,23 @@ export default function EventCard({ event }: EventCardProps) {
     if (!event.images || event.images.length === 0) {
       return "/placeholder-event.jpg";
     }
-    // Buscar imagen 16:9 o la primera disponible
-    const image =
-      event.images.find((img) => img.ratio === "16_9") || event.images[0];
-    return image.url;
+
+    // Ordenar imágenes por calidad (ancho descendente) y buscar 16:9
+    const sortedImages = [...event.images].sort((a, b) => b.width - a.width);
+
+    // Preferir 16:9 de alta calidad (ancho >= 640px)
+    const highQuality16_9 = sortedImages.find(
+      (img) => img.ratio === "16_9" && img.width >= 640
+    );
+
+    if (highQuality16_9) return highQuality16_9.url;
+
+    // Si no hay 16:9 de calidad, usar la imagen más grande disponible (>= 640px)
+    const highQualityImage = sortedImages.find((img) => img.width >= 640);
+    if (highQualityImage) return highQualityImage.url;
+
+    // Fallback: la imagen más grande que tengamos
+    return sortedImages[0].url;
   };
 
   // Formatear fecha
