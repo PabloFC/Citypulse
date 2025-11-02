@@ -9,6 +9,79 @@ interface EventsSectionProps {
   countryCode?: string; // Opcional: para mejorar la búsqueda
 }
 
+// Lista de ciudades españolas con eventos de Ticketmaster
+const SPANISH_CITIES_WITH_EVENTS = [
+  // Principales ciudades
+  "Madrid",
+  "Barcelona",
+  "Valencia",
+  "Sevilla",
+  "Zaragoza",
+  "Málaga",
+  "Murcia",
+  "Palma",
+  "Las Palmas de Gran Canaria",
+  "Bilbao",
+
+  // Ciudades turísticas y culturales
+  "Alicante",
+  "Córdoba",
+  "Valladolid",
+  "Vigo",
+  "Gijón",
+  "Hospitalet de Llobregat",
+  "Vitoria",
+  "Granada",
+  "A Coruña",
+  "Elche",
+  "Oviedo",
+  "Terrassa",
+  "Badalona",
+  "Cartagena",
+  "Jerez de la Frontera",
+  "Sabadell",
+  "Santa Cruz de Tenerife",
+  "Pamplona",
+  "Almería",
+  "Leganés",
+  "Fuenlabrada",
+  "Santander",
+
+  // Ciudades medianas con actividad cultural
+  "Burgos",
+  "Albacete",
+  "Castellón de la Plana",
+  "Alcalá de Henares",
+  "Getafe",
+  "Salamanca",
+  "Logroño",
+  "San Sebastián",
+  "Badajoz",
+  "Huelva",
+  "Lleida",
+  "Tarragona",
+  "Marbella",
+  "León",
+  "Cádiz",
+  "Dos Hermanas",
+  "Torrejón de Ardoz",
+  "Parla",
+  "Reus",
+  "Mataró",
+  "Alcorcón",
+  "Toledo",
+  "Girona",
+  "Ávila",
+  "Cáceres",
+  "Segovia",
+  "Cuenca",
+  "Jaén",
+  "Guadalajara",
+  "Ourense",
+  "Palencia",
+  "Zamora",
+];
+
 export default function EventsSection({
   city,
   countryCode = "ES",
@@ -18,11 +91,34 @@ export default function EventsSection({
   );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [shouldShow, setShouldShow] = useState(true);
 
   useEffect(() => {
     const fetchEvents = async () => {
       setLoading(true);
       setError(null);
+
+      // Verificar si es una ciudad española con eventos
+      const normalizedCity = city
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+      const isSupportedCity = SPANISH_CITIES_WITH_EVENTS.some(
+        (supportedCity) =>
+          supportedCity
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "") === normalizedCity
+      );
+
+      // Si no es una ciudad soportada, no mostrar la sección
+      if (!isSupportedCity) {
+        setShouldShow(false);
+        setLoading(false);
+        return;
+      }
+
+      setShouldShow(true);
 
       try {
         const apiKey = process.env.NEXT_PUBLIC_TICKETMASTER_API_KEY;
@@ -37,7 +133,7 @@ export default function EventsSection({
         const params = new URLSearchParams({
           apikey: apiKey,
           city: city,
-          countryCode: countryCode,
+          countryCode: "ES", // Forzar España
           size: "10", // Traer 10 eventos para filtrar y quedarnos con 3 de calidad
           sort: "date,asc", // Ordenar por fecha ascendente (próximos eventos)
           locale: "es-ES",
@@ -96,6 +192,11 @@ export default function EventsSection({
       fetchEvents();
     }
   }, [city, countryCode]);
+
+  // Si no es una ciudad soportada, no renderizar nada
+  if (!shouldShow) {
+    return null;
+  }
 
   // Estado de carga
   if (loading) {
