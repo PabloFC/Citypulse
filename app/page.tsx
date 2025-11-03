@@ -3,6 +3,7 @@
 import { useState } from "react";
 import CitySearch from "./components/CitySearch";
 import WeatherBanner from "./components/WeatherBanner";
+import PlacesSection from "./components/PlacesSection";
 import EventsSection from "./components/EventsSection";
 import NewsSection from "./components/NewsSection";
 
@@ -41,6 +42,9 @@ export default function Home() {
           <div>
             {/* Weather Banner - Ocupa todo el ancho */}
             <WeatherBanner city={selectedCity} />
+
+            {/* Places Section - Lugares de Interés */}
+            <PlacesSection city={selectedCity} />
 
             {/* Grid de Eventos y Noticias */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

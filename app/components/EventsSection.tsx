@@ -204,7 +204,7 @@ export default function EventsSection({
       <div className="col-span-full">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center space-x-2">
           <span>🎭</span>
-          <span>Eventos Próximos</span>
+          <span>Próximos Eventos</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[1, 2, 3].map((i) => (
@@ -234,7 +234,7 @@ export default function EventsSection({
       <div className="col-span-full">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center space-x-2">
           <span>🎭</span>
-          <span>Eventos Próximos</span>
+          <span>Próximos Eventos</span>
         </h2>
         <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-red-200 dark:border-red-800 p-6">
           <div className="flex items-center space-x-3 text-red-600 dark:text-red-400">
@@ -270,7 +270,7 @@ export default function EventsSection({
       <div className="col-span-full">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center space-x-2">
           <span>🎭</span>
-          <span>Eventos Próximos</span>
+          <span>Próximos Eventos</span>
         </h2>
         <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-yellow-200 dark:border-yellow-800 p-8 text-center">
           <svg
@@ -287,7 +287,7 @@ export default function EventsSection({
             />
           </svg>
           <p className="text-gray-600 dark:text-gray-400 mb-2 font-semibold">
-            No se encontraron eventos próximos en &quot;{city}&quot;
+            No se encontraron próximos eventos en &quot;{city}&quot;
           </p>
           <p className="text-sm text-gray-500 dark:text-gray-500">
             Intenta buscar una ciudad más grande o revisa más tarde
@@ -303,7 +303,7 @@ export default function EventsSection({
     <div className="col-span-full">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center space-x-2">
         <span>🎭</span>
-        <span>Eventos Próximos</span>
+        <span>Próximos eventos</span>
         <span className="text-sm font-normal text-gray-500 dark:text-gray-400 ml-2">
           ({eventsData.page.totalElements} eventos disponibles)
         </span>

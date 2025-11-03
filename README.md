@@ -5,10 +5,12 @@ Dashboard urbano en tiempo real que muestra clima, eventos próximos y noticias 
 ## ✨ Características
 
 - 🌡️ **Clima actual**: Temperatura, sensación térmica, humedad y más
+- 🗺️ **Lugares de interés**: Descubre museos, restaurantes, parques y atracciones turísticas con fotos, ratings y enlaces a Google Maps
 - 🎭 **Eventos próximos**: Los 5 eventos más cercanos en la ciudad (conciertos, deportes, teatro, etc.)
 - 📰 **Noticias locales**: Las 3 noticias más importantes de cada ciudad
 - 🌓 **Modo oscuro**: Interfaz adaptable a tus preferencias
 - 📱 **Responsive**: Funciona perfectamente en móvil, tablet y desktop
+- 🔍 **Filtros inteligentes**: Filtra lugares por categoría (turismo, museos, restaurantes, etc.)
 
 ## 🛠️ Stack Técnico
 
@@ -31,6 +33,7 @@ npm install
 
 ```env
 NEXT_PUBLIC_OPENWEATHER_API_KEY=tu_api_key_openweather
+NEXT_PUBLIC_GOOGLE_PLACES_API_KEY=tu_api_key_google_places
 NEXT_PUBLIC_NEWS_API_KEY=tu_api_key_newsapi
 NEXT_PUBLIC_TICKETMASTER_API_KEY=tu_api_key_ticketmaster
 ```
@@ -59,6 +62,18 @@ npm run dev
 - Regístrate gratis
 - **Límite gratuito**: 100 solicitudes/día
 
+### Google Places API (Lugares de Interés)
+
+- Consulta la guía detallada: [`GOOGLE_PLACES_API_GUIDE.md`](./GOOGLE_PLACES_API_GUIDE.md)
+- Visita [https://console.cloud.google.com](https://console.cloud.google.com)
+- Crea un nuevo proyecto o selecciona uno existente
+- Habilita las siguientes APIs:
+  - **Places API**
+  - **Geocoding API**
+- Ve a "Credenciales" y crea una API key
+- **Importante**: Restringe tu API key por dominio o dirección IP para seguridad
+- **Límite gratuito**: $200 en créditos mensuales (aprox. 28,000 solicitudes de búsqueda de lugares)
+
 ### Ticketmaster (Eventos)
 
 - Consulta la guía detallada: [`TICKETMASTER_API_GUIDE.md`](./TICKETMASTER_API_GUIDE.md)
@@ -69,6 +84,7 @@ npm run dev
 ## 📋 APIs Utilizadas
 
 - **OpenWeatherMap** - Información meteorológica en tiempo real
+- **Google Places API** - Lugares de interés, atracciones turísticas y puntos de interés
 - **NewsAPI** - Noticias locales y relevantes
 - **Ticketmaster Discovery API** - Eventos y entretenimiento
 
@@ -79,13 +95,18 @@ CityPulse/
 ├── app/
 │   ├── components/
 │   │   ├── CitySearch.tsx      # Buscador de ciudades
-│   │   ├── WeatherCard.tsx     # Tarjeta de clima
+│   │   ├── WeatherBanner.tsx   # Banner de clima
+│   │   ├── PlaceCard.tsx       # Tarjeta de lugar individual
+│   │   ├── PlacesSection.tsx   # Sección de lugares de interés
 │   │   ├── EventCard.tsx       # Tarjeta de evento individual
 │   │   ├── EventsSection.tsx   # Sección de eventos
 │   │   ├── NewsCard.tsx        # Tarjeta de noticia individual
-│   │   └── NewsSection.tsx     # Sección de noticias
+│   │   ├── NewsSection.tsx     # Sección de noticias
+│   │   ├── Navbar.tsx          # Barra de navegación
+│   │   └── Footer.tsx          # Pie de página
 │   ├── types/
 │   │   ├── weather.ts          # Tipos para clima
+│   │   ├── places.ts           # Tipos para lugares
 │   │   ├── events.ts           # Tipos para eventos
 │   │   └── news.ts             # Tipos para noticias
 │   ├── globals.css
