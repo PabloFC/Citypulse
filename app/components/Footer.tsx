@@ -8,9 +8,6 @@ export default function Footer() {
           {/* Logo y descripción */}
           <div className="flex flex-col items-center md:items-start space-y-2">
             <div className="flex items-center space-x-2">
-              <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-md flex items-center justify-center">
-                <span className="text-white font-bold text-sm">CP</span>
-              </div>
               <span className="text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 CityPulse
               </span>
@@ -55,7 +52,7 @@ export default function Footer() {
         {/* Powered by */}
         <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800 text-center">
           <p className="text-xs text-gray-500 dark:text-gray-500">
-            Powered by OpenWeatherMap, NewsAPI & IQAir
+            Created by PabloFC - Powered by Next.js, Tailwind CSS
           </p>
         </div>
       </div>
