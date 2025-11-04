@@ -36,7 +36,7 @@ npm install
 ```env
 NEXT_PUBLIC_OPENWEATHER_API_KEY=tu_api_key_openweather
 NEXT_PUBLIC_GOOGLE_PLACES_API_KEY=tu_api_key_google_places
-NEXT_PUBLIC_NEWS_API_KEY=tu_api_key_newsapi
+NEXT_PUBLIC_GNEWS_API_KEY=tu_api_key_gnews
 NEXT_PUBLIC_TICKETMASTER_API_KEY=tu_api_key_ticketmaster
 ```
 
@@ -57,12 +57,14 @@ npm run dev
 - Obtén tu API key del dashboard
 - **Límite gratuito**: 1,000 llamadas/día
 
-### NewsAPI (Noticias)
+### GNews API (Noticias)
 
-- Consulta la guía detallada: [`NEWS_API_GUIDE.md`](./NEWS_API_GUIDE.md)
-- Visita [https://newsapi.org](https://newsapi.org)
-- Regístrate gratis
+- Consulta la guía detallada: [`GNEWS_API_GUIDE.md`](./GNEWS_API_GUIDE.md)
+- Visita [https://gnews.io](https://gnews.io)
+- Regístrate gratis (sin tarjeta de crédito)
 - **Límite gratuito**: 100 solicitudes/día
+- **✅ Funciona en producción** (Vercel, Netlify, etc.)
+- **Nota**: Hemos cambiado de NewsAPI a GNews porque NewsAPI no funciona en producción con el plan gratuito
 
 ### Google Places API (Lugares de Interés)
 
@@ -87,7 +89,7 @@ npm run dev
 
 - **OpenWeatherMap** - Información meteorológica en tiempo real
 - **Google Places API** - Lugares de interés, atracciones turísticas y puntos de interés
-- **NewsAPI** - Noticias locales y relevantes
+- **GNews API** - Noticias locales y relevantes (funciona en producción)
 - **Ticketmaster Discovery API** - Eventos y entretenimiento
 
 ## 📂 Estructura del Proyecto
@@ -116,7 +118,7 @@ CityPulse/
 │   └── page.tsx
 ├── public/
 ├── TICKETMASTER_API_GUIDE.md   # Guía de Ticketmaster
-├── NEWS_API_GUIDE.md           # Guía de NewsAPI
+├── GNEWS_API_GUIDE.md          # Guía de GNews API
 ├── API_KEYS_GUIDE.md           # Guía general de APIs
 └── README.md
 ```

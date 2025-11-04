@@ -19,30 +19,24 @@ export default function NewsSection({ city }: NewsSectionProps) {
       setError(null);
 
       try {
-        const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
+        const apiKey = process.env.NEXT_PUBLIC_GNEWS_API_KEY;
 
         if (!apiKey) {
           throw new Error(
-            "API key de NewsAPI no configurada. Añade NEXT_PUBLIC_NEWS_API_KEY en .env.local"
+            "API key de GNews no configurada. Añade NEXT_PUBLIC_GNEWS_API_KEY en .env.local"
           );
         }
 
-        // Buscar noticias relacionadas con la ciudad
-        // Usamos comillas para búsqueda exacta y limitamos resultados
+        // Buscar noticias relacionadas con la ciudad usando GNews API
         const response = await fetch(
-          `https://newsapi.org/v2/everything?q="${encodeURIComponent(
+          `https://gnews.io/api/v4/search?q=${encodeURIComponent(
             city
-          )}"&language=es&sortBy=relevancy&pageSize=9&apiKey=${apiKey}`
+          )}&lang=es&country=es&max=9&apikey=${apiKey}`
         );
 
         if (!response.ok) {
-          if (response.status === 401) {
+          if (response.status === 401 || response.status === 403) {
             throw new Error("API key inválida o no autorizada");
-          }
-          if (response.status === 426) {
-            throw new Error(
-              "Actualiza tu plan de NewsAPI para usar esta función en producción"
-            );
           }
           if (response.status === 429) {
             throw new Error("Has superado el límite de solicitudes");
@@ -50,10 +44,26 @@ export default function NewsSection({ city }: NewsSectionProps) {
           throw new Error("Error al obtener noticias");
         }
 
-        const data: NewsResponse = await response.json();
+        const data = await response.json();
+
+        // Convertir formato GNews a formato NewsAPI para compatibilidad
+        const newsData: NewsResponse = {
+          status: "ok",
+          totalResults: data.totalArticles || 0,
+          articles: data.articles.map((article: any) => ({
+            source: { id: null, name: article.source.name },
+            author: article.author || article.source.name,
+            title: article.title,
+            description: article.description,
+            url: article.url,
+            urlToImage: article.image,
+            publishedAt: article.publishedAt,
+            content: article.content,
+          })),
+        };
 
         // Filtrar noticias que realmente contengan el nombre de la ciudad
-        const filteredArticles = data.articles.filter((article) => {
+        const filteredArticles = newsData.articles.filter((article) => {
           const titleLower = article.title.toLowerCase();
           const descLower = (article.description || "").toLowerCase();
           const cityLower = city.toLowerCase();
@@ -70,7 +80,7 @@ export default function NewsSection({ city }: NewsSectionProps) {
         });
 
         setNews({
-          ...data,
+          ...newsData,
           articles: sortedArticles.slice(0, 3), // Limitar a 3 noticias más importantes
           totalResults: sortedArticles.length,
         });
