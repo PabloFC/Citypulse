@@ -19,48 +19,17 @@ export default function NewsSection({ city }: NewsSectionProps) {
       setError(null);
 
       try {
-        const apiKey = process.env.NEXT_PUBLIC_GNEWS_API_KEY;
-
-        if (!apiKey) {
-          throw new Error(
-            "API key de GNews no configurada. Añade NEXT_PUBLIC_GNEWS_API_KEY en .env.local"
-          );
-        }
-
-        // Buscar noticias relacionadas con la ciudad usando GNews API
+        // Llamar a nuestra API Route en lugar de GNews directamente
         const response = await fetch(
-          `https://gnews.io/api/v4/search?q=${encodeURIComponent(
-            city
-          )}&lang=es&country=es&max=9&apikey=${apiKey}`
+          `/api/news?city=${encodeURIComponent(city)}`
         );
 
         if (!response.ok) {
-          if (response.status === 401 || response.status === 403) {
-            throw new Error("API key inválida o no autorizada");
-          }
-          if (response.status === 429) {
-            throw new Error("Has superado el límite de solicitudes");
-          }
-          throw new Error("Error al obtener noticias");
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Error al obtener noticias");
         }
 
-        const data = await response.json();
-
-        // Convertir formato GNews a formato NewsAPI para compatibilidad
-        const newsData: NewsResponse = {
-          status: "ok",
-          totalResults: data.totalArticles || 0,
-          articles: data.articles.map((article: any) => ({
-            source: { id: null, name: article.source.name },
-            author: article.author || article.source.name,
-            title: article.title,
-            description: article.description,
-            url: article.url,
-            urlToImage: article.image,
-            publishedAt: article.publishedAt,
-            content: article.content,
-          })),
-        };
+        const newsData: NewsResponse = await response.json();
 
         // Filtrar noticias que realmente contengan el nombre de la ciudad
         const filteredArticles = newsData.articles.filter((article) => {
