@@ -61,16 +61,29 @@ export default function CityInfoSection({ city }: CityInfoSectionProps) {
 
   return (
     <div className="mb-8">
+      {/* Título con barra de color */}
+      <div className="mb-6">
+        <div className="flex items-center space-x-3 mb-2">
+          <div className="w-1 h-8 bg-gradient-to-b from-purple-500 to-violet-600 rounded-full"></div>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            Información de la Ciudad
+          </h2>
+        </div>
+        <p className="text-sm text-gray-600 dark:text-gray-400 ml-7">
+          Conoce la historia y datos curiosos de {cityInfo.name}
+        </p>
+      </div>
+
       <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
-        {/* Header con degradado */}
-        <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 p-6">
+        {/* Header con degradado morado */}
+        <div className="bg-gradient-to-r from-purple-600 via-violet-600 to-purple-700 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-2xl font-bold text-white mb-1">
+              <h3 className="text-2xl font-bold text-white mb-1">
                 {cityInfo.name}
-              </h2>
+              </h3>
               {cityInfo.nickname && (
-                <p className="text-blue-100 text-sm italic">
+                <p className="text-purple-100 text-sm italic">
                   &ldquo;{cityInfo.nickname}&rdquo;
                 </p>
               )}
@@ -79,7 +92,7 @@ export default function CityInfoSection({ city }: CityInfoSectionProps) {
               <div className="text-3xl font-bold text-white">
                 {formatPopulation(cityInfo.population)}
               </div>
-              <div className="text-blue-100 text-sm">habitantes</div>
+              <div className="text-purple-100 text-sm">habitantes</div>
             </div>
           </div>
         </div>

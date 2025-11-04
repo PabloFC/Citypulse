@@ -30,7 +30,7 @@ export default function PopularCityCard({
         />
         {/* Overlay con degradado */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-        
+
         {/* Nombre de la ciudad */}
         <div className="absolute bottom-4 left-4 right-4">
           <h3 className="text-2xl font-bold text-white mb-1">{city}</h3>

@@ -162,11 +162,18 @@ export default function PlacesSection({ city }: PlacesSectionProps) {
 
   return (
     <div className="col-span-full mb-8">
-      {/* Título */}
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center space-x-2">
-        <span>🗺️</span>
-        <span>Lugares de Interés en {city}</span>
-      </h2>
+      {/* Título con barra de color */}
+      <div className="mb-6">
+        <div className="flex items-center space-x-3 mb-2">
+          <div className="w-1 h-8 bg-gradient-to-b from-teal-500 to-green-500 rounded-full"></div>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            Lugares de Interés
+          </h2>
+        </div>
+        <p className="text-sm text-gray-600 dark:text-gray-400 ml-7">
+          Descubre los mejores lugares para visitar en {city}
+        </p>
+      </div>
 
       {/* Filtros por categoría */}
       <div className="flex flex-wrap gap-2 mb-6">

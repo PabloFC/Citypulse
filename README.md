@@ -1,16 +1,18 @@
 # 🌆 CityPulse
 
-Dashboard urbano en tiempo real que muestra clima, eventos próximos y noticias locales de cualquier ciudad del mundo.
+Tu guía completa de las principales ciudades españolas. Descubre clima actual, lugares imprescindibles, eventos próximos y noticias locales en tiempo real.
 
 ## ✨ Características
 
-- 🌡️ **Clima actual**: Temperatura, sensación térmica, humedad y más
+- 🌡️ **Clima actual**: Temperatura, sensación térmica, humedad y condiciones meteorológicas
 - 🗺️ **Lugares de interés**: Descubre museos, restaurantes, parques y atracciones turísticas con fotos, ratings y enlaces a Google Maps
-- 🎭 **Eventos próximos**: Los 5 eventos más cercanos en la ciudad (conciertos, deportes, teatro, etc.)
-- 📰 **Noticias locales**: Las 3 noticias más importantes de cada ciudad
+- ℹ️ **Información de la ciudad**: Datos históricos, población, curiosidades y lugares emblemáticos
+- 🎭 **Eventos próximos**: Los mejores eventos de la ciudad (conciertos, deportes, teatro, festivales)
+- 📰 **Noticias locales**: Las noticias más relevantes de cada ciudad
 - 🌓 **Modo oscuro**: Interfaz adaptable a tus preferencias
 - 📱 **Responsive**: Funciona perfectamente en móvil, tablet y desktop
-- 🔍 **Filtros inteligentes**: Filtra lugares por categoría (turismo, museos, restaurantes, etc.)
+- 🔍 **Filtros inteligentes**: Filtra lugares por categoría (turismo, museos, restaurantes, parques, tiendas)
+- 💾 **Historial**: Guarda tus búsquedas recientes para acceso rápido
 
 ## 🛠️ Stack Técnico
 

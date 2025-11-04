@@ -7,9 +7,9 @@ import Footer from "./components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CityPulse - Dashboard Urbano en Tiempo Real",
+  title: "CityPulse - Tu Guía de Ciudades Españolas",
   description:
-    "Monitorea clima, calidad del aire y noticias locales de tu ciudad",
+    "Descubre clima actual, lugares de interés, eventos próximos y noticias locales de las principales ciudades de España",
 };
 
 export default function RootLayout({

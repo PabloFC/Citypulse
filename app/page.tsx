@@ -13,25 +13,29 @@ import PopularCityCard from "./components/PopularCityCard";
 const featuredCities = [
   {
     city: "Madrid",
-    image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80",
     description: "Capital de España",
     highlights: ["🏛️ Museos", "🌳 Retiro", "🍽️ Gastronomía"],
   },
   {
     city: "Barcelona",
-    image: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&q=80",
     description: "Ciudad Condal",
     highlights: ["🏰 Sagrada Familia", "🏖️ Playas", "🎨 Gaudí"],
   },
   {
     city: "Valencia",
-    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
     description: "Ciudad de las Artes",
     highlights: ["🎭 Ciudad Artes", "🥘 Paella", "🎆 Fallas"],
   },
   {
     city: "Sevilla",
-    image: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&q=80",
     description: "Capital andaluza",
     highlights: ["🕌 Alcázar", "🌸 Primavera", "💃 Flamenco"],
   },
@@ -45,11 +49,11 @@ export default function Home() {
   useEffect(() => {
     const lastCity = localStorage.getItem("lastCity");
     const recent = localStorage.getItem("recentCities");
-    
+
     if (recent) {
       setRecentCities(JSON.parse(recent));
     }
-    
+
     // Opcional: cargar automáticamente la última ciudad
     // if (lastCity) {
     //   setSelectedCity(lastCity);
@@ -58,15 +62,18 @@ export default function Home() {
 
   const handleCitySelect = (city: string) => {
     setSelectedCity(city);
-    
+
     // Guardar en localStorage
     localStorage.setItem("lastCity", city);
-    
+
     // Actualizar historial (máximo 5 ciudades)
-    const updatedRecent = [city, ...recentCities.filter(c => c !== city)].slice(0, 5);
+    const updatedRecent = [
+      city,
+      ...recentCities.filter((c) => c !== city),
+    ].slice(0, 5);
     setRecentCities(updatedRecent);
     localStorage.setItem("recentCities", JSON.stringify(updatedRecent));
-    
+
     // Smooth scroll al contenido
     setTimeout(() => {
       window.scrollTo({ top: 400, behavior: "smooth" });
@@ -82,11 +89,11 @@ export default function Home() {
             CityPulse
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400">
-            Dashboard urbano en tiempo real
+            Tu guía completa de ciudades españolas
           </p>
           <p className="text-base text-gray-500 dark:text-gray-500 max-w-2xl mx-auto">
-            Monitorea el clima, calidad del aire y noticias locales de cualquier
-            ciudad del mundo
+            Descubre el clima actual, lugares de interés, eventos próximos y
+            noticias locales de las ciudades más importantes de España
           </p>
         </div>
 
@@ -109,7 +116,10 @@ export default function Home() {
             </div>
 
             {/* 3. Grid de Eventos y Noticias - ¿Qué está pasando? */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-slideUp" style={{ animationDelay: "0.3s" }}>
+            <div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-slideUp"
+              style={{ animationDelay: "0.3s" }}
+            >
               {/* Events Section */}
               <EventsSection city={selectedCity} />
 
@@ -167,7 +177,8 @@ export default function Home() {
                   Explora ciudades populares
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Descubre el clima, lugares de interés y eventos de las ciudades más visitadas
+                  Descubre clima, lugares imprescindibles, eventos y noticias de
+                  cada ciudad
                 </p>
               </div>
 

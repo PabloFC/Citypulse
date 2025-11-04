@@ -202,10 +202,17 @@ export default function EventsSection({
   if (loading) {
     return (
       <div className="col-span-full">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center space-x-2">
-          <span>🎭</span>
-          <span>Próximos Eventos</span>
-        </h2>
+        <div className="mb-8">
+          <div className="flex items-center space-x-3 mb-2">
+            <div className="w-1 h-8 bg-gradient-to-b from-pink-500 to-rose-600 rounded-full"></div>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+              Próximos Eventos
+            </h2>
+          </div>
+          <p className="text-gray-600 dark:text-gray-400 ml-4">
+            Eventos y actividades en {city}
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[1, 2, 3].map((i) => (
             <div
@@ -232,10 +239,17 @@ export default function EventsSection({
   if (error) {
     return (
       <div className="col-span-full">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center space-x-2">
-          <span>🎭</span>
-          <span>Próximos Eventos</span>
-        </h2>
+        <div className="mb-8">
+          <div className="flex items-center space-x-3 mb-2">
+            <div className="w-1 h-8 bg-gradient-to-b from-pink-500 to-rose-600 rounded-full"></div>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+              Próximos Eventos
+            </h2>
+          </div>
+          <p className="text-gray-600 dark:text-gray-400 ml-4">
+            Eventos y actividades en {city}
+          </p>
+        </div>
         <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-red-200 dark:border-red-800 p-6">
           <div className="flex items-center space-x-3 text-red-600 dark:text-red-400">
             <svg
@@ -268,10 +282,17 @@ export default function EventsSection({
   ) {
     return (
       <div className="col-span-full">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center space-x-2">
-          <span>🎭</span>
-          <span>Próximos Eventos</span>
-        </h2>
+        <div className="mb-8">
+          <div className="flex items-center space-x-3 mb-2">
+            <div className="w-1 h-8 bg-gradient-to-b from-pink-500 to-rose-600 rounded-full"></div>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+              Próximos Eventos
+            </h2>
+          </div>
+          <p className="text-gray-600 dark:text-gray-400 ml-4">
+            Eventos y actividades en {city}
+          </p>
+        </div>
         <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-yellow-200 dark:border-yellow-800 p-8 text-center">
           <svg
             className="mx-auto h-12 w-12 text-yellow-500 mb-4"
@@ -301,13 +322,20 @@ export default function EventsSection({
 
   return (
     <div className="col-span-full">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center space-x-2">
-        <span>🎭</span>
-        <span>Próximos eventos</span>
-        <span className="text-sm font-normal text-gray-500 dark:text-gray-400 ml-2">
-          ({eventsData.page.totalElements} eventos disponibles)
-        </span>
-      </h2>
+      <div className="mb-8">
+        <div className="flex items-center space-x-3 mb-2">
+          <div className="w-1 h-8 bg-gradient-to-b from-pink-500 to-rose-600 rounded-full"></div>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            Próximos Eventos
+          </h2>
+          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+            ({eventsData.page.totalElements} eventos)
+          </span>
+        </div>
+        <p className="text-gray-600 dark:text-gray-400 ml-4">
+          Eventos y actividades en {city}
+        </p>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {events.map((event) => (
           <EventCard key={event.id} event={event} />
