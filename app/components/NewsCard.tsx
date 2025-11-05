@@ -20,16 +20,16 @@ export default function NewsCard({ article }: NewsCardProps) {
       href={article.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
+      className="block bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-2xl hover:scale-[1.02] hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 group"
     >
       {/* Imagen */}
-      <div className="relative w-full h-48 bg-gray-200 dark:bg-gray-800">
+      <div className="relative w-full h-48 bg-gray-200 dark:bg-gray-800 overflow-hidden">
         {article.urlToImage ? (
           <Image
             src={article.urlToImage}
             alt={article.title}
             fill
-            className="object-cover"
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             onError={(e) => {
               const target = e.target as HTMLImageElement;

@@ -104,14 +104,14 @@ export default function EventCard({ event }: EventCardProps) {
   const priceRange = getPriceRange();
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-xl hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 hover:-translate-y-1 group">
       {/* Imagen del evento */}
       <div className="relative h-48 overflow-hidden">
         <Image
           src={getImage()}
           alt={event.name}
           fill
-          className="object-cover"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute top-3 right-3 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold">
@@ -201,7 +201,7 @@ export default function EventCard({ event }: EventCardProps) {
           href={event.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="block w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-lg text-center transition-all duration-300 mt-4"
+          className="block w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-lg text-center transition-all duration-300 mt-4 hover:shadow-lg hover:scale-[1.02]"
         >
           🎫 Ver entradas
         </a>
