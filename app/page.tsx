@@ -84,17 +84,40 @@ export default function Home() {
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Hero Section */}
-        <div className="text-center space-y-4 mb-16">
-          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            CityPulse
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400">
+        <div className="text-center space-y-5 mb-16">
+          <div className="inline-block">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              CityPulse
+            </h1>
+            <div className="mt-3 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto w-20"></div>
+          </div>
+          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-medium">
             Tu guía completa de ciudades españolas
           </p>
-          <p className="text-base text-gray-500 dark:text-gray-500 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
             Descubre el clima actual, lugares de interés, eventos próximos y
             noticias locales de las ciudades más importantes de España
           </p>
+          {!selectedCity && (
+            <div className="pt-2">
+              <div className="inline-flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+                <svg
+                  className="w-4 h-4 animate-bounce"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+                <span>Empieza buscando una ciudad abajo</span>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Buscador de ciudades */}
