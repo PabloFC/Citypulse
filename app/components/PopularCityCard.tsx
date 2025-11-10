@@ -1,10 +1,15 @@
 "use client";
 
+interface Highlight {
+  icon: React.ComponentType<{ className?: string }>;
+  text: string;
+}
+
 interface PopularCityCardProps {
   city: string;
   image: string;
   description: string;
-  highlights: string[];
+  highlights: Highlight[];
   onSelect: (city: string) => void;
 }
 
@@ -41,14 +46,18 @@ export default function PopularCityCard({
       {/* Contenido */}
       <div className="p-4">
         <div className="flex flex-wrap gap-2 mb-3">
-          {highlights.map((highlight, index) => (
-            <span
-              key={index}
-              className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800"
-            >
-              {highlight}
-            </span>
-          ))}
+          {highlights.map((highlight, index) => {
+            const IconComponent = highlight.icon;
+            return (
+              <span
+                key={index}
+                className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800"
+              >
+                <IconComponent className="w-3.5 h-3.5" />
+                {highlight.text}
+              </span>
+            );
+          })}
         </div>
 
         {/* CTA */}

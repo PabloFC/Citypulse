@@ -7,18 +7,25 @@ import {
   PlaceCategoryOption,
 } from "../types/places";
 import PlaceCard from "./PlaceCard";
+import {
+  MapPin,
+  Building2,
+  UtensilsCrossed,
+  Trees,
+  ShoppingBag,
+} from "lucide-react";
 
 interface PlacesSectionProps {
   city: string;
 }
 
-// Categorías de lugares disponibles
+// Categorías de lugares disponibles con iconos SVG profesionales
 const categories: PlaceCategoryOption[] = [
-  { id: "tourist_attraction", label: "Turismo", icon: "🗿" },
-  { id: "museum", label: "Museos", icon: "🏛️" },
-  { id: "restaurant", label: "Restaurantes", icon: "🍽️" },
-  { id: "park", label: "Parques", icon: "🌳" },
-  { id: "shopping_mall", label: "Tiendas", icon: "🛍️" },
+  { id: "tourist_attraction", label: "Turismo", icon: MapPin },
+  { id: "museum", label: "Museos", icon: Building2 },
+  { id: "restaurant", label: "Restaurantes", icon: UtensilsCrossed },
+  { id: "park", label: "Parques", icon: Trees },
+  { id: "shopping_mall", label: "Tiendas", icon: ShoppingBag },
 ];
 
 export default function PlacesSection({ city }: PlacesSectionProps) {
@@ -177,20 +184,25 @@ export default function PlacesSection({ city }: PlacesSectionProps) {
 
       {/* Filtros por categoría */}
       <div className="flex flex-wrap gap-2 mb-6">
-        {categories.map((category) => (
-          <button
-            key={category.id}
-            onClick={() => setSelectedCategory(category.id)}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-              selectedCategory === category.id
-                ? "bg-blue-600 text-white shadow-lg scale-105"
-                : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-            }`}
-          >
-            <span>{category.icon}</span>
-            <span>{category.label}</span>
-          </button>
-        ))}
+        {categories.map((category) => {
+          const IconComponent = category.icon as React.ComponentType<{
+            className?: string;
+          }>;
+          return (
+            <button
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id)}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                selectedCategory === category.id
+                  ? "bg-blue-600 text-white shadow-lg scale-105"
+                  : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+              }`}
+            >
+              <IconComponent className="w-4 h-4" />
+              <span>{category.label}</span>
+            </button>
+          );
+        })}
       </div>
 
       {/* Grid de lugares */}

@@ -61,5 +61,5 @@ export type PlaceCategory =
 export interface PlaceCategoryOption {
   id: PlaceCategory;
   label: string;
-  icon: string;
+  icon: string | React.ComponentType<{ className?: string }>;
 }

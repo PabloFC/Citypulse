@@ -8,6 +8,20 @@ import PlacesSection from "./components/PlacesSection";
 import EventsSection from "./components/EventsSection";
 import NewsSection from "./components/NewsSection";
 import PopularCityCard from "./components/PopularCityCard";
+import {
+  Building2,
+  Trees,
+  UtensilsCrossed,
+  Castle,
+  Waves,
+  Palette,
+  Theater,
+  Soup,
+  Sparkles,
+  Landmark,
+  Sun,
+  Music,
+} from "lucide-react";
 
 // Ciudades populares destacadas
 const featuredCities = [
@@ -16,28 +30,44 @@ const featuredCities = [
     image:
       "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80",
     description: "Capital de España",
-    highlights: ["🏛️ Museos", "🌳 Retiro", "🍽️ Gastronomía"],
+    highlights: [
+      { icon: Building2, text: "Museos" },
+      { icon: Trees, text: "Retiro" },
+      { icon: UtensilsCrossed, text: "Gastronomía" },
+    ],
   },
   {
     city: "Barcelona",
     image:
       "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&q=80",
     description: "Ciudad Condal",
-    highlights: ["🏰 Sagrada Familia", "🏖️ Playas", "🎨 Gaudí"],
+    highlights: [
+      { icon: Castle, text: "Sagrada Familia" },
+      { icon: Waves, text: "Playas" },
+      { icon: Palette, text: "Gaudí" },
+    ],
   },
   {
     city: "Valencia",
     image:
       "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
     description: "Ciudad de las Artes",
-    highlights: ["🎭 Ciudad Artes", "🥘 Paella", "🎆 Fallas"],
+    highlights: [
+      { icon: Theater, text: "Ciudad Artes" },
+      { icon: Soup, text: "Paella" },
+      { icon: Sparkles, text: "Fallas" },
+    ],
   },
   {
     city: "Sevilla",
     image:
       "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&q=80",
     description: "Capital andaluza",
-    highlights: ["🕌 Alcázar", "🌸 Primavera", "💃 Flamenco"],
+    highlights: [
+      { icon: Landmark, text: "Alcázar" },
+      { icon: Sun, text: "Primavera" },
+      { icon: Music, text: "Flamenco" },
+    ],
   },
 ];
 
