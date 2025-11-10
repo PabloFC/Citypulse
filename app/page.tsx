@@ -8,6 +8,7 @@ import PlacesSection from "./components/PlacesSection";
 import EventsSection from "./components/EventsSection";
 import NewsSection from "./components/NewsSection";
 import PopularCityCard from "./components/PopularCityCard";
+import CityNavBar from "./components/CityNavBar";
 import {
   Building2,
   Trees,
@@ -110,8 +111,20 @@ export default function Home() {
     }, 100);
   };
 
+  const handleChangeCity = () => {
+    // Scroll suave al buscador
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Opcional: limpiar la ciudad seleccionada para mostrar el estado inicial
+    // setSelectedCity(null);
+  };
+
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      {/* Sticky Navigation Bar - Solo visible cuando hay ciudad seleccionada */}
+      {selectedCity && (
+        <CityNavBar city={selectedCity} onChangeCity={handleChangeCity} />
+      )}
+
       <div className="max-w-7xl mx-auto">
         {/* Hero Section */}
         <div className="text-center space-y-5 mb-16">
