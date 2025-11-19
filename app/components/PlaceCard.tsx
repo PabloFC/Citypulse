@@ -1,5 +1,6 @@
 import { Place } from "../types/places";
 import Image from "next/image";
+import Button from "./Button";
 
 interface PlaceCardProps {
   place: Place;
@@ -186,14 +187,9 @@ export default function PlaceCard({ place }: PlaceCardProps) {
         )}
 
         {/* Botón para ver en Google Maps */}
-        <a
-          href={mapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full text-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-200 text-sm font-medium hover:shadow-md hover:scale-[1.02]"
-        >
+        <Button href={mapsUrl} variant="gradient">
           Ver en Google Maps
-        </a>
+        </Button>
       </div>
     </div>
   );

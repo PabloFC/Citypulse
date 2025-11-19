@@ -1,5 +1,6 @@
 import { TicketmasterEvent } from "../types/events";
 import Image from "next/image";
+import Button from "./Button";
 
 interface EventCardProps {
   event: TicketmasterEvent;
@@ -197,14 +198,9 @@ export default function EventCard({ event }: EventCardProps) {
         )}
 
         {/* Botón de compra */}
-        <a
-          href={event.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-lg text-center transition-all duration-300 mt-4 hover:shadow-lg hover:scale-[1.02]"
-        >
-          🎫 Ver entradas
-        </a>
+        <Button href={event.url} variant="gradient" className="mt-4">
+          Ver entradas
+        </Button>
       </div>
     </div>
   );
