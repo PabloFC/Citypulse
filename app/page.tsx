@@ -170,7 +170,7 @@ export default function Home() {
 
         {/* Dashboard - Solo se muestra si hay una ciudad seleccionada */}
         {selectedCity ? (
-          <div className="space-y-8 animate-fadeIn">
+          <div className="space-y-16 animate-fadeIn">
             {/* 1. Weather Banner - Info práctica inmediata */}
             <div className="animate-slideUp" style={{ animationDelay: "0.1s" }}>
               <WeatherBanner city={selectedCity} />
