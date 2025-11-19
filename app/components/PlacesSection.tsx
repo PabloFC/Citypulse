@@ -100,7 +100,6 @@ export default function PlacesSection({ city }: PlacesSectionProps) {
           <span>Lugares de Interés</span>
         </h2>
 
-        {/* Filtros skeleton */}
         <div className="flex flex-wrap gap-2 mb-6">
           {categories.map((cat) => (
             <div
@@ -110,7 +109,6 @@ export default function PlacesSection({ city }: PlacesSectionProps) {
           ))}
         </div>
 
-        {/* Cards skeleton */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[1, 2, 3, 4, 5, 6].map((i) => (
             <div
@@ -169,7 +167,6 @@ export default function PlacesSection({ city }: PlacesSectionProps) {
 
   return (
     <div className="col-span-full mb-8">
-      {/* Título con barra de color */}
       <div className="mb-6">
         <div className="flex items-center space-x-3 mb-2">
           <div className="w-1 h-8 bg-gradient-to-b from-teal-500 to-green-500 rounded-full"></div>
@@ -182,7 +179,6 @@ export default function PlacesSection({ city }: PlacesSectionProps) {
         </p>
       </div>
 
-      {/* Filtros por categoría */}
       <div className="flex flex-wrap gap-2 mb-6">
         {categories.map((category) => {
           const IconComponent = category.icon as React.ComponentType<{
@@ -205,7 +201,6 @@ export default function PlacesSection({ city }: PlacesSectionProps) {
         })}
       </div>
 
-      {/* Grid de lugares */}
       {places.results.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {places.results.map((place) => (

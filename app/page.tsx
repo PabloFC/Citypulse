@@ -126,7 +126,6 @@ export default function Home() {
       )}
 
       <div className="max-w-7xl mx-auto">
-        {/* Hero Section */}
         <div className="text-center space-y-5 mb-16">
           <div className="inline-block">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -163,45 +162,34 @@ export default function Home() {
           )}
         </div>
 
-        {/* Buscador de ciudades */}
         <div className="max-w-2xl mx-auto mb-12">
           <CitySearch onCitySelect={handleCitySelect} />
         </div>
 
-        {/* Dashboard - Solo se muestra si hay una ciudad seleccionada */}
         {selectedCity ? (
           <div className="space-y-16 animate-fadeIn">
-            {/* 1. Weather Banner - Info práctica inmediata */}
             <div className="animate-slideUp" style={{ animationDelay: "0.1s" }}>
               <WeatherBanner city={selectedCity} />
             </div>
 
-            {/* 2. Places Section - Acción inmediata: ¿Qué ver/hacer? */}
             <div className="animate-slideUp" style={{ animationDelay: "0.2s" }}>
               <PlacesSection city={selectedCity} />
             </div>
 
-            {/* 3. Grid de Eventos y Noticias - ¿Qué está pasando? */}
-            <div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-slideUp"
-              style={{ animationDelay: "0.3s" }}
-            >
-              {/* Events Section */}
+            <div className="animate-slideUp" style={{ animationDelay: "0.3s" }}>
               <EventsSection city={selectedCity} />
+            </div>
 
-              {/* News Section */}
+            <div className="animate-slideUp" style={{ animationDelay: "0.4s" }}>
               <NewsSection city={selectedCity} />
             </div>
 
-            {/* 4. City Info Section - Contexto cultural (al final) */}
-            <div className="animate-slideUp" style={{ animationDelay: "0.4s" }}>
+            <div className="animate-slideUp" style={{ animationDelay: "0.5s" }}>
               <CityInfoSection city={selectedCity} />
             </div>
           </div>
         ) : (
-          /* Estado inicial mejorado con ciudades destacadas */
           <div className="space-y-12">
-            {/* Ciudades recientes (si existen) */}
             {recentCities.length > 0 && (
               <div className="max-w-4xl mx-auto">
                 <div className="flex items-center space-x-2 mb-4">
@@ -236,7 +224,6 @@ export default function Home() {
               </div>
             )}
 
-            {/* Ciudades destacadas */}
             <div>
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
@@ -262,7 +249,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* CTA adicional */}
             <div className="text-center">
               <div className="inline-flex items-center space-x-2 text-gray-500 dark:text-gray-400">
                 <svg

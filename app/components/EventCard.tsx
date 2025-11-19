@@ -102,6 +102,7 @@ export default function EventCard({ event }: EventCardProps) {
 
   const time = formatTime();
   const genre = getGenre();
+  const venue = getVenue();
   const priceRange = getPriceRange();
 
   return (
@@ -120,19 +121,15 @@ export default function EventCard({ event }: EventCardProps) {
         </div>
       </div>
 
-      {/* Contenido */}
       <div className="p-5 space-y-3">
-        {/* Título */}
         <h3 className="font-bold text-lg text-gray-900 dark:text-white line-clamp-2 leading-tight">
           {event.name}
         </h3>
 
-        {/* Género */}
         {genre && (
           <p className="text-sm text-gray-600 dark:text-gray-400">{genre}</p>
         )}
 
-        {/* Fecha y hora */}
         <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
           <svg
             className="h-5 w-5 text-blue-500"
@@ -153,31 +150,31 @@ export default function EventCard({ event }: EventCardProps) {
           </span>
         </div>
 
-        {/* Lugar */}
-        <div className="flex items-start space-x-2 text-gray-700 dark:text-gray-300">
-          <svg
-            className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-            />
-          </svg>
-          <span className="text-sm line-clamp-2">{getVenue()}</span>
-        </div>
+        {venue && (
+          <div className="flex items-start space-x-2 text-gray-700 dark:text-gray-300">
+            <svg
+              className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
+            <span className="text-sm line-clamp-2">{getVenue()}</span>
+          </div>
+        )}
 
-        {/* Precio */}
         {priceRange && (
           <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
             <svg
@@ -197,7 +194,6 @@ export default function EventCard({ event }: EventCardProps) {
           </div>
         )}
 
-        {/* Botón de compra */}
         <Button href={event.url} variant="gradient" className="mt-4">
           Ver entradas
         </Button>

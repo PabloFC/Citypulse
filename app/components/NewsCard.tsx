@@ -62,15 +62,13 @@ export default function NewsCard({ article }: NewsCardProps) {
           {article.title}
         </h3>
 
-        {/* Descripción */}
         {article.description && (
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">
             {article.description}
           </p>
         )}
 
-        {/* Footer: Fuente y fecha */}
-        <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-500 pt-3 border-t border-gray-200 dark:border-gray-800">
+        <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-100 dark:border-gray-800">
           <span className="font-medium truncate">{article.source.name}</span>
           <span className="whitespace-nowrap ml-2">{formattedDate}</span>
         </div>

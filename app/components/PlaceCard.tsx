@@ -31,7 +31,6 @@ export default function PlaceCard({ place }: PlaceCardProps) {
 
     return (
       <div className="flex items-center space-x-1">
-        {/* Estrellas llenas */}
         {[...Array(fullStars)].map((_, i) => (
           <svg
             key={`full-${i}`}
@@ -99,7 +98,6 @@ export default function PlaceCard({ place }: PlaceCardProps) {
 
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-xl hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 hover:-translate-y-1 group">
-      {/* Imagen del lugar */}
       <div className="relative h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 overflow-hidden">
         {photoUrl ? (
           <Image
@@ -115,7 +113,6 @@ export default function PlaceCard({ place }: PlaceCardProps) {
           </div>
         )}
 
-        {/* Badge de estado (abierto/cerrado) */}
         {place.opening_hours?.open_now !== undefined && (
           <div className="absolute top-3 right-3">
             <span
@@ -131,14 +128,11 @@ export default function PlaceCard({ place }: PlaceCardProps) {
         )}
       </div>
 
-      {/* Contenido */}
       <div className="p-4 space-y-3">
-        {/* Título */}
         <h3 className="font-semibold text-lg text-gray-900 dark:text-white line-clamp-2">
           {place.name}
         </h3>
 
-        {/* Dirección */}
         {place.vicinity && (
           <p className="text-sm text-gray-600 dark:text-gray-400 flex items-start space-x-2">
             <svg
@@ -164,10 +158,8 @@ export default function PlaceCard({ place }: PlaceCardProps) {
           </p>
         )}
 
-        {/* Rating */}
         {renderStars()}
 
-        {/* Nivel de precio */}
         {place.price_level !== undefined && (
           <div className="flex items-center space-x-1 text-sm text-gray-600 dark:text-gray-400">
             <span>Precio:</span>
@@ -186,7 +178,6 @@ export default function PlaceCard({ place }: PlaceCardProps) {
           </div>
         )}
 
-        {/* Botón para ver en Google Maps */}
         <Button href={mapsUrl} variant="gradient">
           Ver en Google Maps
         </Button>

@@ -34,7 +34,6 @@ export default function CityNavBar({ city, onChangeCity }: CityNavBarProps) {
         <div className="backdrop-blur-md bg-white/90 dark:bg-gray-900/90 border-b border-gray-200 dark:border-gray-800 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-14">
-              {/* Breadcrumbs */}
               <div className="flex items-center space-x-2 text-sm">
                 <button
                   onClick={onChangeCity}
