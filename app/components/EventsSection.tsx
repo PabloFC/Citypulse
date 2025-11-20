@@ -167,15 +167,21 @@ export default function EventsSection({
             return hasHighQualityImage;
           });
 
-          // Limitar a 3 eventos de calidad
+          // Eliminar duplicados basándose en el ID del evento
+          const uniqueEvents = highQualityEvents.filter(
+            (event, index, self) =>
+              index === self.findIndex((e) => e.id === event.id)
+          );
+
+          // Limitar a 3 eventos de calidad únicos
           setEventsData({
             ...data,
             _embedded: {
-              events: highQualityEvents.slice(0, 3),
+              events: uniqueEvents.slice(0, 3),
             },
             page: {
               ...data.page,
-              totalElements: highQualityEvents.length,
+              totalElements: uniqueEvents.length,
             },
           });
         } else {
