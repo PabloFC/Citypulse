@@ -189,9 +189,6 @@ export default function NewsSection({ city }: NewsSectionProps) {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
             Noticias Locales
           </h2>
-          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-            ({news.totalResults} noticias)
-          </span>
         </div>
         <p className="text-gray-600 dark:text-gray-400 ml-4">
           Últimas noticias de {city}

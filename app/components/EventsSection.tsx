@@ -328,9 +328,6 @@ export default function EventsSection({
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
             Próximos Eventos
           </h2>
-          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-            ({eventsData.page.totalElements} eventos)
-          </span>
         </div>
         <p className="text-gray-600 dark:text-gray-400 ml-4">
           Eventos y actividades en {city}
